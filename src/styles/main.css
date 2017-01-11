@@ -1,0 +1,47 @@
+* {
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  color: #195b6c;
+  font-size: 40px;
+  text-align: center;
+}
+
+h2 {
+  color: #195b6c;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea {
+  border: 1px solid #3f656f;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 5px 0;
+  padding: 10px;
+  width: 400px;
+}
+
+textarea {
+  height: 60px;
+  resize: none;
+}
+
+#SubmitButton {
+  border: none;
+  width: 100px;
+}
+
+#SubmitButton:hover {
+  cursor: pointer;
+}
