@@ -13,12 +13,12 @@ export default class Grudge extends Component {
   }
 
   render() {
-    const { name, description } = this.props;
+    const { grudge } = this.props;
 
     return (
       <article className='Grudge' id={this.state.id}>
-        <h3>Name: {name}</h3>
-        <p>Wrongful behavior: {description}</p>
+        <h3>Name: {grudge.name}</h3>
+        <p>Wrongful behavior: {grudge.description}</p>
         <label htmlFor='Forgiven'>Forgive:</label>
         <input
           value={this.state.forgiven}

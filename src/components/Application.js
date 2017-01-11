@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Form from './Form';
-import GrudgeList from './GrudgeList';
 import axios from 'axios';
+import Grudge from './Grudge';
 
 export default class Application extends Component {
   constructor() {
@@ -26,15 +26,16 @@ export default class Application extends Component {
 
   render() {
     const { grudgeBin } = this.state;
+    let grudgesArray = grudgeBin.map(grudge => {
+      return <Grudge grudge={grudge} />
+    });
 
     return (
       <section className="Application">
         <h1>The Grudge List</h1>
         <Form />
         <section>
-          <GrudgeList
-            grudgeBin={grudgeBin}
-          />
+          {grudgesArray}
         </section>
         <section>{grudgeBin}</section>
       </section>

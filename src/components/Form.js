@@ -22,6 +22,7 @@ export default class Form extends Component {
     e.preventDefault();
     console.log('send grudge to database');
     this.clearInputs();
+    this.postGrudge(e);
   }
 
   clearInputs() {
