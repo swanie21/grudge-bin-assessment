@@ -1,35 +1,38 @@
 const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
 const app = express();
+const bodyParser = require('body-parser');
 const cors = require('cors');
+const server = app.set('port', process.env.PORT || 3001);
 
 app.use(cors());
-app.use(express.static(path.resolve(__dirname, '..', 'build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('port', process.env.PORT || 3001);
+app.use(express.static('public'));
 app.locals.title = 'Grudge Bin';
+// app.locals.database =[];
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
 
-app.locals.database = {
-  data: [
-    { name: 'Walter White', description: 'Makes bad stuff', forgiven: 'false' },
-    { name: 'The Joker', description: 'Scary clown', forgiven: 'false' }
-  ]
-};
+app.locals.database = [
+  { name: 'Walter White', description: 'Makes bad stuff', forgiven: 'false' },
+  { name: 'The Joker', description: 'Scary clown', forgiven: 'false' }
+];
+
+app.get('/', (request, response) => {
+  response.send(app.locals.title);
+});
 
 app.get('/grudges', (request, response) => {
-  response.json(app.locals.database.data);
+  const grudges = app.locals.database;
+  response.send(grudges);
 });
 
 app.post('/grudges', (request, response) => {
-  const createGrudge = { id:Date.now(), name:request.body.name, description:request.body.description, forgiven: false };
-  app.locals.database.data.push(createGrudge);
-  response.json(app.locals.database.data);
+  const createGrudge = { id: Date.now(), name: request.body.name, description: request.body.description, forgiven: false };
+  app.locals.database.push(createGrudge);
+  response.status(201).json(app.locals.database);
 });
 
-module.exports = app;
+module.exports = server;

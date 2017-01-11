@@ -17,10 +17,11 @@ export default class Application extends Component {
 
   fetchGrudges() {
     axios.get('http://localhost:3001/grudges')
-    .then((response) => {
-      console.log(response.data);
-      this.setState({ grudgeBin: response.data.grudges });
-    });
+    .then(response => {
+      console.log(response);
+      this.setState({ grudgeBin: response.data });
+    })
+    .catch(error => console.log(error));
   }
 
   render() {

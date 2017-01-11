@@ -5,7 +5,6 @@ export default class Grudge extends Component {
     super(props);
     this.state = {
       forgiven: false,
-      id: Date.now()
     };
   }
 
