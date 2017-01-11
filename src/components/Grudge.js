@@ -13,10 +13,10 @@ export default class Grudge extends Component {
   }
 
   render() {
-    const { grudge } = this.props;
+    const { grudge, index } = this.props;
 
     return (
-      <article className='Grudge' id={this.state.id}>
+      <article className='Grudge' key={index}>
         <h3>Name: {grudge.name}</h3>
         <p>Wrongful behavior: {grudge.description}</p>
         <label htmlFor='Forgiven'>Forgive:</label>

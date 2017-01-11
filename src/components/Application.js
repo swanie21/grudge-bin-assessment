@@ -18,7 +18,6 @@ export default class Application extends Component {
   fetchGrudges() {
     axios.get('http://localhost:3001/grudges')
     .then(response => {
-      console.log(response);
       this.setState({ grudgeBin: response.data });
     })
     .catch(error => console.log(error));
@@ -26,8 +25,8 @@ export default class Application extends Component {
 
   render() {
     const { grudgeBin } = this.state;
-    let grudgesArray = grudgeBin.map(grudge => {
-      return <Grudge grudge={grudge} />
+    let grudgesArray = grudgeBin.map((grudge, index) => {
+      return <Grudge grudge={grudge} key={index} />
     });
 
     return (

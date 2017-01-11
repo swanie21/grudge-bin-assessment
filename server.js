@@ -9,16 +9,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.locals.title = 'Grudge Bin';
-// app.locals.database =[];
+app.locals.database =[];
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
-
-app.locals.database = [
-  { name: 'Walter White', description: 'Makes bad stuff', forgiven: 'false' },
-  { name: 'The Joker', description: 'Scary clown', forgiven: 'false' }
-];
 
 app.get('/', (request, response) => {
   response.send(app.locals.title);

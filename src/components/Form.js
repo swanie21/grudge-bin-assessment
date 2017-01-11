@@ -20,7 +20,6 @@ export default class Form extends Component {
 
   createGrudge(e) {
     e.preventDefault();
-    console.log('send grudge to database');
     this.clearInputs();
     this.postGrudge(e);
   }
